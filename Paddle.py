@@ -11,12 +11,21 @@ class Paddle(Turtle):
         self.color('white')
         self.setx(pos)
         self.speed('fastest')
-        self.y_velocity = 10
+        self.y_velocity = 50
+
+        self.y_target = 0
+
+    def update(self):
+        self.sety(lerp(self.ycor(), self.y_target, 0.1))
 
     def moveForward(self):
         if self.ycor() <= 200:
-            self.sety(self.ycor() + self.y_velocity)
+            self.y_target = self.ycor() + self.y_velocity
 
     def moveBack(self):
         if self.ycor() >= -200:
-            self.sety(self.ycor() - self.y_velocity)
+            self.y_target = self.ycor() - self.y_velocity
+
+
+def lerp(a: float, b: float, t: float) -> float:
+    return (1 - t) * a + t * b

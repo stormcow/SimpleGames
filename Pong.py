@@ -24,8 +24,10 @@ while True:
         score.updateP2Score()
     if ball.xcor() >= 380:
         score.updateP1Score()
+    enemy.update()
+    player.update()
     ball.checkPaddle(enemy, player)
     ball.move()
     score.writeScore()
     myScreen.update()
-    time.sleep(0.01)
+    # time.sleep(0.01)
